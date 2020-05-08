@@ -41,10 +41,10 @@ class ClientProtocol(asyncio.Protocol):
                     self.send_history()
         else:
             self.send_message(decoded)
-            if len(self.server.history) == 3:
+            if len(self.server.history) == 10:
                 self.server.history.pop(0)
             self.server.history.append(f"<{self.login}> {decoded}")
-            print(self.server.history)
+            
 
     def send_history(self):
         for item in self.server.history:
